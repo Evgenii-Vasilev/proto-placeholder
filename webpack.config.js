@@ -18,7 +18,11 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
         ]
     },
 
@@ -27,4 +31,14 @@ module.exports = {
             template: 'client/pages/main.html'
         }),
     ],
+
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'client'),
+        },
+        compress: true,
+        port: 9000,
+        hot: true,
+        open: true
+    },
 }
